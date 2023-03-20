@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: db-hltv-clone
+    image: postgres:14-alpine
+    # healthcheck:
+    #   test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+    #   timeout: 45s
+    #   interval: 10s
+    #   retries: 10
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=hltv-clone
+    volumes:
+      - pgdata:/data/postgres
+    ports:
+      - 5432:5432
+    # build:
+    #  network: host
+
+volumes:
+  pgdata:
+    driver: local

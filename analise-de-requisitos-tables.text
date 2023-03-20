@@ -1,0 +1,60 @@
+*matches*
+
+id
+date
+top tier    
+teams       (table team)  relations match  N ---- N  teams
+event       (table event) relations match  N ---- 1  event
+lan         
+
+
+*team*
+
+id
+name
+ranking position
+players (table player)  relations team  1,0 ---- 0,N  player
+titles  (table title)   relations team  1 ---- 0,N  titles
+//events  (table event)   relations team  N ---- N  events
+roster  (table player)  relations team  N ---- N player (rosters)
+
+
+*roster*
+
+team_id
+player_id
+roster_id
+
+
+*player*
+
+id
+nickname
+is_coach (boolean)
+titles  (table title) relations player  1 ---- 0,N  titles
+age
+
+
+*titles*
+
+id
+name
+date
+location
+
+
+
+*events*
+
+id
+name
+date
+//teams (table team)
+prize pool
+location
+mvp (table player) relations event 1 ---- 1 player
+
+
+*coach*
+nickname
+
