@@ -3,21 +3,18 @@ import { Player } from "../../models/Player";
 import { IPlayerRepository } from "../../repositories/Players/IPlayerRepository";
 
 @injectable()
-class InsertPlayerService {
+class FindPlayerByNicknameService {
   constructor(
     @inject("PlayerRepository") private playerRepository: IPlayerRepository
   ) {}
 
-  async execute(player: Player): Promise<void> {
+  async execute(nickname: string): Promise<Player> {
     try {
-      const playerValidationExists = await this.playerRepository.findByNickname(
-        player.nickname
-      );
 
-      if (Object.keys(playerValidationExists).length != 0)
-        throw new Error(`"error": "Player already exists!"`);
+      const player: Player = await this.playerRepository.findByNickname(nickname);
+      
+      return player;
 
-      await this.playerRepository.insert(player);
     } catch (err) {
       console.log(err);
       throw new Error(`error:${err}`);
@@ -25,4 +22,5 @@ class InsertPlayerService {
   }
 }
 
-export { InsertPlayerService };
+
+export {FindPlayerByNicknameService}

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { Player } from "../../models/Player";
-import { FindAllPlayersService } from "../../services/Players/FindAllPlayersController";
+import { FindAllPlayersService } from "../../services/Players/FindAllPlayersService";
 
 class FindAllPlayersController {
   async handle(req: Request, res: Response): Promise<Response> {
@@ -12,7 +12,7 @@ class FindAllPlayersController {
       return res.status(200).json(players);
     } catch (err) {
       console.log(err);
-      return res.status(500).json({ error: err });
+      return res.status(500).json({ "error": err });
     }
   }
 }

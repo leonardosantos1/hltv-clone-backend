@@ -12,7 +12,7 @@ class FindPlayerByIdController {
       return res.status(200).json(player);
     } catch (err) {
       console.log(err);
-      return res.status(400).json({ error: err });
+      return res.status(400).json({ "error": err });
     }
   }
 }

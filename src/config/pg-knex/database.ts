@@ -1,6 +1,7 @@
 import { knex as setupKnex, Knex } from "knex";
 
-const config: Knex.Config = {
+
+export const configKnex: Knex.Config = {
   client: "pg",
   connection: {
     host: "localhost",
@@ -11,8 +12,8 @@ const config: Knex.Config = {
   useNullAsDefault: true,
   migrations: {
     extension: "ts",
-    directory: "./db/migrations",
+    directory: "./src/migrations",
   },
 };
 
-export const knex = setupKnex(config);
+export const knex = setupKnex(configKnex);

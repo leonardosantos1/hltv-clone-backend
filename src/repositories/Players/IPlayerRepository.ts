@@ -5,7 +5,7 @@ interface IPlayerRepository {
   findById(id: string): Promise<Player>;
   findByNickname(nickname: string): Promise<Player>;
   findAll(): Promise<Player[]>;
-  delete(id: string): Promise<void>;
+  deleteById(id: string): Promise<void>;
   update(id: string): Promise<Player>;
 }
 

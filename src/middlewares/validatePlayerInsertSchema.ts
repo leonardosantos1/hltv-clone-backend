@@ -4,6 +4,8 @@ import { z } from "zod";
 const playersSchema = z.object({
     nickname: z.string().min(2),
     is_coach: z.boolean(),
+    name:z.string().min(3),
+    nationality:z.string().min(2).max(2),
     title_id: z.string().nullable(),
     age: z.number().min(13)
 });

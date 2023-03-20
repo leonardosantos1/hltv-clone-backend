@@ -30,6 +30,8 @@ roster_id
 
 id
 nickname
+name
+nationality
 is_coach (boolean)
 titles  (table title) relations player  1 ---- 0,N  titles
 age

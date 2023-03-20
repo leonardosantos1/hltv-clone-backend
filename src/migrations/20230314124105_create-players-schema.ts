@@ -7,6 +7,8 @@ export async function up(knex: Knex): Promise<void> {
         table.uuid('id').primary();
         table.string('nickname', 100).unique().notNullable();
         table.integer('age').notNullable();
+        table.string("name").notNullable();
+        table.string("nationality").notNullable();
         table.boolean('is_coach').notNullable();
         table.uuid('title_id').nullable().references('id').inTable('titles');
       });
