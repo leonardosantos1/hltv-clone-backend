@@ -89,8 +89,17 @@ class PlayerRepository implements IPlayerRepository {
     }
   }
 
-  async update(id: string): Promise<Player> {
-    throw new Error("Method not implemented.");
+  async updateById(id: string,payload:object): Promise<void> {
+    
+      try{
+
+        await knex("players").where({id}).update(payload);
+
+      }catch(err){
+        console.log(err);
+        throw new Error(`error:${err}`);
+      }
+
   }
 }
 
