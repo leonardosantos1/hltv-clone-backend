@@ -24,7 +24,7 @@ class PlayerRepository implements IPlayerRepository {
       });
     } catch (err) {
       console.log(err);
-      throw new Error(`error:${err}`);
+      throw new Error(`ERROR! Something wrong happened!`);
     }
   }
 
@@ -45,7 +45,7 @@ class PlayerRepository implements IPlayerRepository {
       return player;
     } catch (err) {
       console.log(err);
-      throw new Error(`error: ${err}`);
+      throw new Error(`ERROR! Something wrong happened!`);
     }
   }
 
@@ -66,7 +66,7 @@ class PlayerRepository implements IPlayerRepository {
       return player;
     } catch (err) {
       console.log(err);
-      throw new Error(`error:${err}`);
+      throw new Error(`ERROR! Something wrong happened!`);
     }
   }
 
@@ -76,7 +76,7 @@ class PlayerRepository implements IPlayerRepository {
       return players;
     } catch (err) {
       console.log(err);
-      throw new Error(`error:${err}`);
+      throw new Error(`ERROR! Something wrong happened!`);
     }
   }
 
@@ -85,7 +85,7 @@ class PlayerRepository implements IPlayerRepository {
       await knex("players").where({ id }).del();
     } catch (err) {
       console.log(err);
-      throw new Error(`error:${err}`);
+      throw new Error(`ERROR! Something wrong happened!`);
     }
   }
 
@@ -97,7 +97,7 @@ class PlayerRepository implements IPlayerRepository {
 
       }catch(err){
         console.log(err);
-        throw new Error(`error:${err}`);
+        throw new Error(`ERROR! Something wrong happened!`);
       }
 
   }

@@ -20,7 +20,7 @@ class InsertPlayerService {
       await this.playerRepository.insert(player);
     } catch (err) {
       console.log(err);
-      throw new Error(`error:${err}`);
+      throw new Error(`ERROR! Something wrong happened!`);
     }
   }
 }

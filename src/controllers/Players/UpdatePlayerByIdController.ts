@@ -5,11 +5,20 @@ import { UpdatePlayerByIdService } from "../../services/Players/UpdatePlayerById
 
 class UpdatePlayerByIdController {
   async handle(req: Request, res: Response) {
-    
-    const updatePlayerByIdService = container.resolve(UpdatePlayerByIdService);
-    const player = await updatePlayerByIdService.execute(req.params.id, req.body);
+    try {
+      const updatePlayerByIdService = container.resolve(
+        UpdatePlayerByIdService
+      );
+      const player = await updatePlayerByIdService.execute(
+        req.params.id,
+        req.body
+      );
 
-    return res.status(200).json({player});
+      return res.status(200).json({ player });
+    } catch (err) {
+      console.log(err);
+      return res.status(400).json(`ERROR! Something wrong happened!`);
+    }
   }
 }
 

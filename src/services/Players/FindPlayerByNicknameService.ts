@@ -17,7 +17,7 @@ class FindPlayerByNicknameService {
 
     } catch (err) {
       console.log(err);
-      throw new Error(`error:${err}`);
+      throw new Error(`ERROR! Something wrong happened!`);
     }
   }
 }

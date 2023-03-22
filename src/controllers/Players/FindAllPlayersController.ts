@@ -12,7 +12,7 @@ class FindAllPlayersController {
       return res.status(200).json(players);
     } catch (err) {
       console.log(err);
-      return res.status(500).json({ "error": err });
+      return res.status(500).json(`ERROR! Something wrong happened!`);
     }
   }
 }

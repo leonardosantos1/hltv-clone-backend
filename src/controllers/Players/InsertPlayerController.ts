@@ -11,7 +11,7 @@ class InsertPlayerController {
       return res.status(201).send();
     } catch (err) {
       console.log(err);
-      return res.status(400).json(`error:${err}`);
+      return res.status(400).json(`ERROR! Something wrong happened!`);
     }
   }
 }

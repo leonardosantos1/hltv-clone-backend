@@ -13,7 +13,7 @@ class DeletePlayerByIdService {
       await this.playerRepository.deleteById(id);
     } catch (err) {
       console.log(err);
-      throw new Error(`error:${err}`);
+      throw new Error(`ERROR! Something wrong happened!`);
     }
   }
 }

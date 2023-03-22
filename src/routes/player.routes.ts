@@ -8,6 +8,7 @@ import { UpdatePlayerByIdController } from "../controllers/Players/UpdatePlayerB
 import { validatePlayersInsertSchema } from "../middlewares/validatePlayerInsertSchema";
 import { validatePlayerNicknameSchema } from "../middlewares/validatePlayerNicknameSchema";
 import { validatePlayerParamsId } from "../middlewares/validatePlayerParamsId";
+import { validatePlayerUpdateSchema } from "../middlewares/validatePlayerUpdateSchema";
 
 const routerPlayer = Router();
 
@@ -20,8 +21,7 @@ const updatePlayerByIdController = new UpdatePlayerByIdController();
 
 routerPlayer.get("/:id", validatePlayerParamsId, findPlayerByIdController.handle);
 routerPlayer.delete("/:id",deletePlayerByIdController.handle);
-routerPlayer.put("/:id",updatePlayerByIdController.handle);
-
+routerPlayer.put("/:id",validatePlayerParamsId,validatePlayerUpdateSchema,updatePlayerByIdController.handle);
 routerPlayer.get("/nickname/:nickname", validatePlayerNicknameSchema,findPlayerByNicknameController.handle);
 routerPlayer.get("/", findAllPlayersController.handle);
 routerPlayer.post("/", validatePlayersInsertSchema, insertPlayerController.handle);
