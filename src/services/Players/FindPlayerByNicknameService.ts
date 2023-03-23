@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { ApplicationError } from "../../error/ApplicationError";
 import { Player } from "../../models/Player";
 import { IPlayerRepository } from "../../repositories/Players/IPlayerRepository";
 
@@ -17,7 +18,7 @@ class FindPlayerByNicknameService {
 
     } catch (err) {
       console.log(err);
-      throw new Error(`ERROR! Something wrong happened!`);
+      throw new ApplicationError(`ERROR! Something wrong happened!`,400);
     }
   }
 }

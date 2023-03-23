@@ -2,6 +2,7 @@ import { knex } from "../../config/pg-knex/database";
 import { v4 as uuidV4 } from "uuid";
 import { Player } from "../../models/Player";
 import { IPlayerRepository } from "./IPlayerRepository";
+import { ApplicationError } from "../../error/ApplicationError";
 
 class PlayerRepository implements IPlayerRepository {
   async insert({
@@ -24,7 +25,7 @@ class PlayerRepository implements IPlayerRepository {
       });
     } catch (err) {
       console.log(err);
-      throw new Error(`ERROR! Something wrong happened!`);
+      throw new ApplicationError(`ERROR! Something wrong happened!`,400);
     }
   }
 
@@ -45,7 +46,7 @@ class PlayerRepository implements IPlayerRepository {
       return player;
     } catch (err) {
       console.log(err);
-      throw new Error(`ERROR! Something wrong happened!`);
+      throw new ApplicationError(`ERROR! Something wrong happened!`,400);
     }
   }
 
@@ -66,7 +67,7 @@ class PlayerRepository implements IPlayerRepository {
       return player;
     } catch (err) {
       console.log(err);
-      throw new Error(`ERROR! Something wrong happened!`);
+      throw new ApplicationError(`ERROR! Something wrong happened!`,400);
     }
   }
 
@@ -76,7 +77,7 @@ class PlayerRepository implements IPlayerRepository {
       return players;
     } catch (err) {
       console.log(err);
-      throw new Error(`ERROR! Something wrong happened!`);
+      throw new ApplicationError(`ERROR! Something wrong happened!`,500);
     }
   }
 
@@ -85,7 +86,7 @@ class PlayerRepository implements IPlayerRepository {
       await knex("players").where({ id }).del();
     } catch (err) {
       console.log(err);
-      throw new Error(`ERROR! Something wrong happened!`);
+      throw new ApplicationError(`ERROR! Something wrong happened!`,400);
     }
   }
 
@@ -97,7 +98,7 @@ class PlayerRepository implements IPlayerRepository {
 
       }catch(err){
         console.log(err);
-        throw new Error(`ERROR! Something wrong happened!`);
+        throw new ApplicationError(`ERROR! Something wrong happened!`,400);
       }
 
   }

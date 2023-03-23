@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { ApplicationError } from "../../error/ApplicationError";
 import { IPlayerRepository } from "../../repositories/Players/IPlayerRepository";
 
 
@@ -13,7 +14,7 @@ class DeletePlayerByIdService {
       await this.playerRepository.deleteById(id);
     } catch (err) {
       console.log(err);
-      throw new Error(`ERROR! Something wrong happened!`);
+      throw new ApplicationError(`ERROR! Something wrong happened!`, 400);
     }
   }
 }

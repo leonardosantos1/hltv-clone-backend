@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { up } from "../../migrations/20230314122341_create-titles-schema";
+import { ApplicationError } from "../../error/ApplicationError";
 import { UpdatePlayerByIdService } from "../../services/Players/UpdatePlayerByIdService";
 
 class UpdatePlayerByIdController {
@@ -17,7 +17,8 @@ class UpdatePlayerByIdController {
       return res.status(200).json({ player });
     } catch (err) {
       console.log(err);
-      return res.status(400).json(`ERROR! Something wrong happened!`);
+      throw new ApplicationError(`ERROR! Something wrong happened!`,400);
+
     }
   }
 }

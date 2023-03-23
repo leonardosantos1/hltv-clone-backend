@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
+import { ApplicationError } from "../../error/ApplicationError";
 import { Player } from "../../models/Player";
 import { FindPlayerByNicknameService } from "../../services/Players/FindPlayerByNicknameService";
 
@@ -17,7 +18,8 @@ class FindPlayerByNicknameController {
       return res.status(200).json(player);
     } catch (err) {
       console.log(err);
-      return res.status(400).json(`ERROR! Something wrong happened!`);
+      throw new ApplicationError(`ERROR! Something wrong happened!`,400);
+
     }
   }
 }

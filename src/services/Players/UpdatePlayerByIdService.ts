@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { ApplicationError } from "../../error/ApplicationError";
 import { up } from "../../migrations/20230314122341_create-titles-schema";
 import { Player } from "../../models/Player";
 import { IPlayerRepository } from "../../repositories/Players/IPlayerRepository";
@@ -22,7 +23,7 @@ class UpdatePlayerByIdService {
       return player;
     } catch (err) {
       console.log(err);
-      throw new Error(`ERROR! Something wrong happened!`);
+      throw new ApplicationError(`ERROR! Something wrong happened!`,400);
     }
   }
 }

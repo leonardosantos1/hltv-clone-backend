@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
+import { ApplicationError } from "../../error/ApplicationError";
 import { InsertPlayerService } from "../../services/Players/InsertPlayerService";
 
 class InsertPlayerController {
@@ -11,7 +12,8 @@ class InsertPlayerController {
       return res.status(201).send();
     } catch (err) {
       console.log(err);
-      return res.status(400).json(`ERROR! Something wrong happened!`);
+      throw new ApplicationError(`ERROR! Something wrong happened!`,400);
+
     }
   }
 }

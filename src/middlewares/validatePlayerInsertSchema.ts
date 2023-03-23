@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import { z } from "zod";
+import { ApplicationError } from "../error/ApplicationError";
 
 const playersSchema = z.object({
-    nickname: z.string().min(2),
+    nickname: z.string().min(2).max(15),
     is_coach: z.boolean(),
     name:z.string().min(3),
     nationality:z.string().min(2).max(2),
@@ -20,6 +21,6 @@ export function validatePlayersInsertSchema(
     next();
   } catch (err) {
     console.log(err);
-    return res.status(400).json(err);
+    throw new ApplicationError(`ERROR! Something wrong happened!`,400);
   }
 }

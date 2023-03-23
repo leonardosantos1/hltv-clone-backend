@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { z } from "zod";
+import { ApplicationError } from "../error/ApplicationError";
 
 const idParamsSchema = z.string().uuid()
 
@@ -13,6 +14,7 @@ export function validatePlayerParamsId(
     next();
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ error: err });
+    throw new ApplicationError(`ERROR! Something wrong happened!`,400);
+
   }
 }
