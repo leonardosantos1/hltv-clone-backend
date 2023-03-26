@@ -1,4 +1,5 @@
 interface Player {
+  id:string;
   nickname: string;
   name:string;
   nationality:string;

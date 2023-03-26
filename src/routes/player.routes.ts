@@ -5,6 +5,7 @@ import { FindPlayerByIdController } from "../controllers/Players/FindPlayerByIdC
 import { FindPlayerByNicknameController } from "../controllers/Players/FindPlayerByNicknameController";
 import { InsertPlayerController } from "../controllers/Players/InsertPlayerController";
 import { UpdatePlayerByIdController } from "../controllers/Players/UpdatePlayerByIdController";
+import { UpdatePlayerByNicknameController } from "../controllers/Players/UpdatePlayerByNicknameController";
 import { validatePlayersInsertSchema } from "../middlewares/validatePlayerInsertSchema";
 import { validatePlayerNicknameSchema } from "../middlewares/validatePlayerNicknameSchema";
 import { validatePlayerParamsId } from "../middlewares/validatePlayerParamsId";
@@ -19,6 +20,7 @@ const findAllPlayersController = new FindAllPlayersController();
 const findPlayerByNicknameController = new FindPlayerByNicknameController();
 const deletePlayerByIdController = new DeletePlayerByIdController();
 const updatePlayerByIdController = new UpdatePlayerByIdController();
+const updatePlayerByNicknameController =  new UpdatePlayerByNicknameController();
 
 routerPlayer.get(
   "/:id",
@@ -36,6 +38,14 @@ routerPlayer.put(
   validatePlayerParamsId,
   validatePlayerUpdateSchema,
   updatePlayerByIdController.handle
+);
+
+routerPlayer.put(
+  "/nickname/:nickname",
+  validateTokenJwt,
+  validatePlayerNicknameSchema,
+  validatePlayerUpdateSchema,
+  updatePlayerByNicknameController.handle
 );
 routerPlayer.get(
   "/nickname/:nickname",
