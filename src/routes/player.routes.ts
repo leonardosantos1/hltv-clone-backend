@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { DeletePlayerByIdController } from "../controllers/Players/DeletePlayerByIdController";
+import { DeletePlayerByNicknameController } from "../controllers/Players/DeletePlayerByNicknameController";
 import { FindAllPlayersController } from "../controllers/Players/FindAllPlayersController";
 import { FindPlayerByIdController } from "../controllers/Players/FindPlayerByIdController";
 import { FindPlayerByNicknameController } from "../controllers/Players/FindPlayerByNicknameController";
@@ -19,6 +20,7 @@ const findPlayerByIdController = new FindPlayerByIdController();
 const findAllPlayersController = new FindAllPlayersController();
 const findPlayerByNicknameController = new FindPlayerByNicknameController();
 const deletePlayerByIdController = new DeletePlayerByIdController();
+const deletePlayerByNicknameController = new DeletePlayerByNicknameController();
 const updatePlayerByIdController = new UpdatePlayerByIdController();
 const updatePlayerByNicknameController =  new UpdatePlayerByNicknameController();
 
@@ -30,7 +32,14 @@ routerPlayer.get(
 routerPlayer.delete(
   "/:id",
   validateTokenJwt,
+  validatePlayerParamsId,
   deletePlayerByIdController.handle
+);
+routerPlayer.delete(
+  "/nickname/:nickname",
+  validateTokenJwt,
+  validatePlayerNicknameSchema,
+  deletePlayerByNicknameController.handle
 );
 routerPlayer.put(
   "/:id",
@@ -53,6 +62,7 @@ routerPlayer.get(
   findPlayerByNicknameController.handle
 );
 routerPlayer.get("/", findAllPlayersController.handle);
+
 routerPlayer.post(
   "/",
   validatePlayersInsertSchema,

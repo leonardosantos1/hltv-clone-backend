@@ -15,7 +15,7 @@ export function validatePlayerNicknameSchema(
     next();
   } catch (err) {
     console.log(err);
-    throw new ApplicationError(`ERROR! Something wrong happened!`,400);
+    throw new ApplicationError(`ERROR! Something wrong happened! path:validatePlayerNicknameSchema`,400);
 
   }
 }
