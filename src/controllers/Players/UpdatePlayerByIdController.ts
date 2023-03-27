@@ -14,7 +14,7 @@ class UpdatePlayerByIdController {
         req.body
       );
 
-      return res.status(200).json({ player });
+      return res.status(200).json( player );
     } catch (err) {
       console.log(err);
       throw new ApplicationError(`ERROR! Something wrong happened!`,400);

@@ -14,7 +14,7 @@ class UpdatePlayerByIdService {
     
     const playerValidationExists = await this.playerRepository.findById(id);
 
-    if (Object.keys(playerValidationExists).length === 0) throw new Error(`"error": "Player not exists!"`);
+    if (!playerValidationExists) throw new Error(`"error": "Player not exists!"`);
 
     try {
       await this.playerRepository.updateById(id, payload);

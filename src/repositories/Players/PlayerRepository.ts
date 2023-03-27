@@ -15,6 +15,15 @@ class PlayerRepository implements IPlayerRepository {
     age,
   }: PlayerDTO): Promise<void> {
     try {
+
+      console.log({
+        nickname,
+        name,
+        nationality,
+        is_coach,
+        title_id,
+        age,
+      })
       await knex("players").insert({
         id: uuidV4(),
         nickname,
@@ -26,7 +35,7 @@ class PlayerRepository implements IPlayerRepository {
       });
     } catch (err) {
       console.log(err);
-      throw new ApplicationError(`ERROR! Something wrong happened!`, 400);
+      throw new ApplicationError(`ERROR! Something wrong happened! path:PlayerRepository`, 400);
     }
   }
 

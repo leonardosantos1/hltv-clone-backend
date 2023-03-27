@@ -11,15 +11,15 @@ export function validateTokenJwt(
     const headerAuthorization = req.headers.authorization;
 
     if (!headerAuthorization)
-      throw new ApplicationError(`ERROR! Need the JWT Token!`, 400);
+      throw new ApplicationError(`ERROR! Need the JWT Token!`, 401);
 
     const [, token] = headerAuthorization.split(" ");
 
     if (!verifyToken(token))
-      throw new ApplicationError(`ERROR! JWT Token invalid!`, 400);
+      throw new ApplicationError(`ERROR! JWT Token invalid!`, 401);
     next();
   } catch (err) {
     console.log(err);
-    throw new ApplicationError(`ERROR! Something wrong happened!`, 400);
+    throw new ApplicationError(`ERROR! Something wrong happened! `, 401);
   }
 }
